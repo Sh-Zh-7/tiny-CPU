@@ -8,6 +8,14 @@ z2
 !i10f 100
 cModel Technology
 dD:/modelsim/examples
+T_opt
+!s110 1584254667
+Vl@Tz;eL9TLOhcCT2SXz4a0
+04 3 4 work alu fast 0
+=1-54bf64384687-5e6dceca-232-156c
+o-quiet -auto_acc_if_foreign -work work
+n@_opt
+OL;O;10.4;61
 valu
 Z0 !s110 1584254421
 !i10b 1
