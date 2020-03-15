@@ -74,7 +74,7 @@ module mips( clk, rst );
    assign AluMux_Result = (AluSrc === 0) ? RD2 : Imm32;
 
    // 指令计数器模块
-   NPC U_NPC (.PC(PC), .NPCOp(NPCOp), .IMM(Imm32), .NPC(NPC))
+   NPC U_NPC (.PC(PC), .NPCOp(NPCOp), .IMM(Imm32), .NPC(NPC));
    PC U_PC (.clk(clk), .rst(rst), .NPC(NPC), .PC(PC)); 
    
    
