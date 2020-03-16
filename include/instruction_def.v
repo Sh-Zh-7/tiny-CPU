@@ -1,54 +1,39 @@
-// OP
-`define INSTR_RTYPE_OP      6'b000000
+// instruction opcode
+`define OPCODE_ADDI 6'h8 // addi
+`define OPCODE_ORI 6'hD // ori
+`define OPCODE_LW 6'h23 // lw
+`define OPCODE_LB 6'h20 // lb
+`define OPCODE_LH 6'h21 // lh
+`define OPCODE_LBU 6'h24 // lbu
+`define OPCODE_LHU 6'h25 // lhu
+`define OPCODE_SW 6'h2B // sw
+`define OPCODE_SB 6'h28 //sb
+`define OPCODE_SH 6'h29 //sh
+`define OPCODE_BEQ 6'h4 // beq
+`define OPCODE_BNE 6'h5 // bne
+`define OPCODE_J 6'h2 // j
+`define OPCODE_JAL 6'h3 // jal
+`define OPCODE_R_JR_JALR 6'h0 // R-R instruction, jr, jalr
+`define OPCODE_SLTI 6'hA // slti
+`define OPCODE_ANDI 6'hC // andi
+`define OPCODE_LUI 6'hF // lui
 
-`define INSTR_LB_OP         6'b100000
-`define INSTR_LH_OP         6'b100001
-`define INSTR_LBU_OP        6'b100100
-`define INSTR_LHU_OP        6'b100101
-`define INSTR_LW_OP         6'b100011
-
-`define INSTR_SB_OP         6'b101000
-`define INSTR_SH_OP         6'b101001
-`define INSTR_SW_OP         6'b101011
-
-`define INSTR_ADDI_OP       6'b001000
-`define INSTR_ADDIU_OP      6'b001001
-`define INSTR_ANDI_OP       6'b001100
-`define INSTR_ORI_OP        6'b001101 
-`define INSTR_XORI_OP       6'b001110
-`define INSTR_LUI_OP        6'b001111
-`define INSTR_SLTI_OP       6'b001010
-`define INSTR_SLTIU_OP      6'b001011
-
-`define INSTR_BEQ_OP        6'b000100
-`define INSTR_BNE_OP        6'b000101
-`define INSTR_BGEZ_OP       6'b000001
-`define INSTR_BGTZ_OP       6'b000111
-`define INSTR_BLEZ_OP       6'b000110
-`define INSTR_BLTZ_OP       6'b000001
-
-`define INSTR_J_OP          6'b000010
-`define INSTR_JAL_OP        6'b000011
-
-// Funct
-`define INSTR_ADD_FUNCT     6'b100000
-`define INSTR_ADDU_FUNCT    6'b100001
-`define INSTR_SUB_FUNCT     6'b100010
-`define INSTR_SUBU_FUNCT    6'b100011
-`define INSTR_AND_FUNCT     6'b100100
-`define INSTR_NOR_FUNCT     6'b100111
-`define INSTR_OR_FUNCT      6'b100101
-`define INSTR_XOR_FUNCT     6'b100110
-`define INSTR_SLT_FUNCT     6'b101010
-`define INSTR_SLTU_FUNCT    6'b101011
-`define INSTR_SLL_FUNCT     6'b000000
-`define INSTR_SRL_FUNCT     6'b000010
-`define INSTR_SRA_FUNCT     6'b000011
-`define INSTR_SLLV_FUNCT    6'b000100
-`define INSTR_SRLV_FUNCT    6'b000110
-`define INSTR_SRAV_FUNCT    6'b000111      
-`define INSTR_JR_FUNCT      6'b001000
-`define INSTR_JALR_FUNCT    6'b001001     
- 
-`define INSTR_BGEZ_RT       5'b00001
-`define INSTR_BLTZ_RT       5'b00000
+//instruction funct
+`define FUNCT_ADD 6'h20 // add
+`define FUNCT_SUB 6'h22 // sub
+`define FUNCT_AND 6'h24 // and
+`define FUNCT_OR 6'h25 // or
+`define FUNCT_SLT 6'h2A // slt
+`define FUNCT_SLTU 6'h2B // sltu
+`define FUNCT_ADDU 6'h21 // addu
+`define FUNCT_SUBU 6'h23 // subu
+`define FUNCT_JR 6'h8 // jr
+`define FUNCT_JALR 6'h9 // jalr
+`define FUNCT_SLL 6'h0 // sll
+`define FUNCT_SRL 6'h2 // srl
+`define FUNCT_SRA 6'h3 // sra
+`define FUNCT_SLLV 6'h4 // sllv
+`define FUNCT_SRLV 6'h6 // srlv
+`define FUNCT_SRAV 6'h7 // srav
+`define FUNCT_XOR 6'h26 // xor
+`define FUNCT_NOR 6'h27 // nor

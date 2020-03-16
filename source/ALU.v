@@ -2,50 +2,31 @@
 module alu (A, B, ALUOp, C, Zero);
            
    input  [31:0] A, B;
-   input  [1:0]  ALUOp;
-   output [31:0] C;
+   input  [3:0]  ALUOp;
+   output reg[31:0] C;
    output        Zero;
    
-   reg [31:0] C;
        
    always @( A or B or ALUOp ) begin
-      case ( ALUOp )
-		 `ALUOp_NOP : C = A;
-		 `ALUOp_ADDU: C = A + B;
-		 `ALUOp_ADD : C = A + B;
-		 `ALUOp_SUBU: C = A - B;
-		 `ALUOp_SUB : C = A + ~B + 1;
-		 `ALUOp_AND : C = A & B;
-		 `ALUOp_OR  : C = A | B;
-		 `ALUOp_NOR : C =~(A|B);
-		 `ALUOp_XOR : C = (A^B);
-		 `ALUOp_SLT : begin
-		 if ( (A + (~B) + 1) >> 31 == 1 )
-			 C = 1;
-		 else
-			 C = 0;
-		 end
-		 `ALUOp_SLTU:
-		 begin
-			if ( A < B ) 
-				C = 1;
-			else
-				C = 0;
-		 end
-		 `ALUOp_SLL : C = A << B;
-		 `ALUOp_SRL : C = A >> B;
-		 `ALUOp_SRA : C[31:0] =  ( { {31{A}}, 1'b0 } << (~B[4:0]) ) | ( A >> B[4:0] ) ;
-		//`ALUOp_EQL
-		//`ALUOp_BNE
-		//`ALUOp_GT0
-		//`ALUOp_GE0
-		//`ALUOp_LT0
-		//`ALUOp_LE0
-         // default:   ;
+      case (ALUOp)
+          `ALU_NOP: C = A;// NOP
+          `ALU_ADD: C = A + B;// ADD
+          `ALU_SUB: C = A - B;// SUB
+          `ALU_AND: C = A & B;// AND/ANDI
+          `ALU_OR: C = A | B;// OR/ORI
+          `ALU_SLT: C = (A < B) ? 32'd1 : 32'd0;// SLT/SLTI
+          `ALU_SLTU: C = ({1'b0, A} < {1'b0, B}) ? 32'd1 : 32'd0;// SLTU
+          `ALU_SLL: C = B << A[4:0];// SLL/SLLV
+          `ALU_SRL: C = B >> A[4:0];// SRL/SRLV
+          `ALU_SRA: C = B >>> A[4:0];// SRA/SRAV
+          `ALU_XOR: C = A ^ B;// XOR
+          `ALU_NOR: C = ~(A | B);// NOR
+          `ALU_LUI: C = {B[15:0], 16'b0};// LUI
+          default: C = A;// Undefined
       endcase
 	  $display("ALU: A=%8X B=%8X C=%8X ALUOp=%2b",A,B,C,ALUOp);
    end // end always;
    
-   assign Zero = (A == B) ? 1 : 0;
+   assign Zero = (C == 32'b0);
 
 endmodule
