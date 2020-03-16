@@ -250,6 +250,8 @@ begin
 		(OpCode == `OPCODE_SH)
 	)
 		MemWrite = 1;
+	else 
+		MemWrite = 0;
 	
 	// MemOp
 	if (
@@ -284,6 +286,8 @@ begin
 		(OpCode == `OPCODE_LH)
 	)
 		MemExt = 1;
+	else 
+		MemExt = 0;
 		
 		
 	// -----------------------------------------------------	

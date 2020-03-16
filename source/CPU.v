@@ -59,8 +59,8 @@ module mips( clk, rst );
 
 	// 数据内存相关
 	wire [31:0] DM_Out;
-	wire [11:2] DM_Addr;
-	assign DM_Addr = Alu_Result[11:2];
+	//wire [11:2] DM_Addr;
+	//assign DM_Addr = Alu_Result[11:2];
 
 	// 寄存器相关
 	wire [31:0] RD1;
@@ -93,7 +93,7 @@ module mips( clk, rst );
         .RegSrc(RegSrc), 
         .ALUOp(ALUOp), 
         .MemOp(MemOp),
-        .MemEXT(MemEXT),
+        .MemExt(MemEXT),
         .MemWrite(MemWrite),
         .ALUSrcA(ALUSrcA), 
         .ALUSrcB(ALUSrcB), 
@@ -129,15 +129,15 @@ module mips( clk, rst );
 		
     mux2 #(32) SelOperand2(
 		.d0(RD2),
-		.d1(imm32), 
+		.d1(Imm32), 
         .s(ALUSrcB),
         .y(op2)
 	);  
 	
 	// 算术运算模块
 	alu U_ALU (
-		.A(RD1), 
-		.B(AluMux_Result),
+		.A(op1), 
+		.B(op2),
 		.ALUOp(ALUOp), 
 		.C(Alu_Result),
 		.Zero(zero)
@@ -147,7 +147,7 @@ module mips( clk, rst );
 	DataMem U_DM (
 		.MemOp(MemOp),
 		.MemEXT(MemEXT),
-		.address(DM_Addr), 
+		.address(Alu_Result), 
 		.din(RD2),
 		.DMWr(MemWrite),
 		.clk(clk), 
@@ -155,7 +155,7 @@ module mips( clk, rst );
 	);
 	
 	
-    mux4 #(32) selRFWriteData(
+    mux4 #(32) SelRFWriteData(
 		.d0(Alu_Result),
 		.d1(DM_Out),
 		// 这里还有一点疑问
@@ -166,7 +166,7 @@ module mips( clk, rst );
 	);
 	
 	// 确定下一个指令的地址
-	PCSrc U_PCSrc(.Jump(Jump), .Branch(Branch), .Zero(Zero), .NPCOp(NPCOp));
+	PCSrc U_PCSrc(.Jump(Jump), .Branch(Branch), .Zero(zero), .NPCOp(NPCOp));
 	NPC U_NPC (.PC(PC), .NPCOp(NPCOp), .IMM(Imm32), .addr(RD1), .NPC(NPC));
 
 endmodule

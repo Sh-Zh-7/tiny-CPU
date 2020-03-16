@@ -7,8 +7,8 @@ module PC( clk, rst, NPC, PC );
 
   always @(posedge clk, posedge rst)
     if (rst) 
-//      PC <= 32'h0000_0000;
-      PC <= 32'h0000_3000;
+      PC <= 32'h0000_0000;
+      //PC <= 32'h0000_3000;
     else
       PC <= NPC;
       

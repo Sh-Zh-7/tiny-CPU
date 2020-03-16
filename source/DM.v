@@ -25,7 +25,7 @@ module DataMem(clk, DMWr, MemOp, MemEXT, address, din, dout);
     reg[15:0] halfRead;
     wire[31:0] out_8_32, out_16_32;
     EXT_8_32 byteExt(.in8(byteRead), .EXTOp(MemEXT), .out32(out_8_32));
-    EXT_16_32 halfExt(.in16(halfRead), .EXTOp(MemEXT), .out32(out_16_32));
+    EXT_16_32 halfExt(.Imm16(halfRead), .EXTOp(MemEXT), .Imm32(out_16_32));
 
     //write data
     always @(posedge clk) 
