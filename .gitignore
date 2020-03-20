@@ -2,3 +2,7 @@
 
 *.cr.mti
 *.mpf
+
+*.wlf
+
+work/
