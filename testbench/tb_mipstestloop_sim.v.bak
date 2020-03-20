@@ -1,12 +1,5 @@
-//for "mipstestloopjal_sim.asm"
-
-//TEXT_BASE_ADDRESS 32'h0000_3000
-//DATA_BASE_ADDRESS 32'h0000_0000
-
-//add, sub, and, or, slt, addi, lw, sw, beq, j, jal
-
 `timescale 1ns/1ns
-module tb_mipstestloopjal_sim();
+module tb_mipstestloop();
     reg clk, rst;
 
     mips cpu(.clk(clk), .rst(rst));
@@ -15,10 +8,7 @@ module tb_mipstestloopjal_sim();
 
     initial
     begin
-        //$readmemh("dat_mipstestloopjal_sim.txt", cpu.insMem.insMem);
-        $readmemh("C:/Users/24312/Desktop/tiny-CPU/dat/mipstestloopjal_sim.dat", cpu.U_IM.imem);
-
-        //$monitor("PC = 0x%8h, instruction = 0x%8h", cpu.PC, cpu.inst);
+        $readmemh("C:/Users/24312/Desktop/tiny-CPU/dat/mipstestloop_sim.dat", cpu.U_IM.imem);
     end
 
     initial
@@ -44,16 +34,16 @@ module tb_mipstestloopjal_sim();
             cnt = cnt + 1;
         end
         
-        if(cnt == 30)
+        if(cnt == 40)
         begin
-            printregFile;
+            printU_RF;
             $display("m[0x%2X] = %d", 80, cpu.U_DM.dataMem[80/4]);
             $display("m[0x%2X] = %d", 84, cpu.U_DM.dataMem[84/4]);
             $stop();
         end
     end
 
-    task printregFile;
+    task printU_RF;
         begin
             $display("R[00-07]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", 0, cpu.U_RF.rf[1], cpu.U_RF.rf[2], cpu.U_RF.rf[3], cpu.U_RF.rf[4], cpu.U_RF.rf[5], cpu.U_RF.rf[6], cpu.U_RF.rf[7]);
             $display("R[08-15]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", cpu.U_RF.rf[8], cpu.U_RF.rf[9], cpu.U_RF.rf[10], cpu.U_RF.rf[11], cpu.U_RF.rf[12], cpu.U_RF.rf[13], cpu.U_RF.rf[14], cpu.U_RF.rf[15]);
@@ -61,4 +51,4 @@ module tb_mipstestloopjal_sim();
             $display("R[24-31]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", cpu.U_RF.rf[24], cpu.U_RF.rf[25], cpu.U_RF.rf[26], cpu.U_RF.rf[27], cpu.U_RF.rf[28], cpu.U_RF.rf[29], cpu.U_RF.rf[30], cpu.U_RF.rf[31]);
         end
     endtask
-endmodule // tb_mipstestloopjal_sim
+endmodule // tb_mipstest_extloop
