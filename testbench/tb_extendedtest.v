@@ -66,15 +66,15 @@ module tb_extendedtest();
 
     task printDataMem;
         begin
-            $display("m[0/4] = 0x%8h", cpu.U_DM.dataMem[0/4]);
-            $display("m[4/4] = 0x%8h", cpu.U_DM.dataMem[4/4]);
-            $display("m[8/4] = 0x%8h", cpu.U_DM.dataMem[8/4]);
-            $display("m[0xc/4] = 0x%8h", cpu.U_DM.dataMem[32'hc/4]);
-            $display("m[0x10/4] = 0x%8h", cpu.U_DM.dataMem[32'h10/4]);
-            $display("m[0x14/4] = 0x%8h", cpu.U_DM.dataMem[32'h14/4]);
-            $display("m[0x18/4] = 0x%8h", cpu.U_DM.dataMem[32'h18/4]);
-            $display("m[0x1c/4] = 0x%8h", cpu.U_DM.dataMem[32'h1c/4]);
-            $display("m[0x20/4] = 0x%8h", cpu.U_DM.dataMem[32'h20/4]);
+            $display("m[0] = 0x%8h", cpu.U_DM.dataMem[0/4]);
+            $display("m[4] = 0x%8h", cpu.U_DM.dataMem[4/4]);
+            $display("m[8] = 0x%8h", cpu.U_DM.dataMem[8/4]);
+            $display("m[0xc] = 0x%8h", cpu.U_DM.dataMem[32'hc/4]);
+            $display("m[0x10] = 0x%8h", cpu.U_DM.dataMem[32'h10/4]);
+            $display("m[0x14] = 0x%8h", cpu.U_DM.dataMem[32'h14/4]);
+            $display("m[0x18] = 0x%8h", cpu.U_DM.dataMem[32'h18/4]);
+            $display("m[0x1c] = 0x%8h", cpu.U_DM.dataMem[32'h1c/4]);
+            $display("m[0x20] = 0x%8h", cpu.U_DM.dataMem[32'h20/4]);
             $stop();
         end
     endtask
