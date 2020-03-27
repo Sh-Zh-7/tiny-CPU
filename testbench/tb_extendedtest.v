@@ -4,7 +4,7 @@
 //DATA_BASE_ADDRESS 32'h0000_0000
 
 `timescale 1ns/1ns
-module tb_extendedtest();
+module TBExtendedTest();
     reg clk, rst;
 
     MIPS cpu(.clk(clk), .rst(rst));
@@ -40,12 +40,12 @@ module tb_extendedtest();
         
         if(cnt == 45)
         begin
-            printRegFile;
-            printDataMem;
+            ShowRegFile;
+            ShowDataMem;
         end
     end
 
-    task printRegFile;
+    task ShowRegFile;
         begin
             $display("R[00-07]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", 0, cpu.rf.rf[1], cpu.rf.rf[2], cpu.rf.rf[3], cpu.rf.rf[4], cpu.rf.rf[5], cpu.rf.rf[6], cpu.rf.rf[7]);
             $display("R[08-15]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", cpu.rf.rf[8], cpu.rf.rf[9], cpu.rf.rf[10], cpu.rf.rf[11], cpu.rf.rf[12], cpu.rf.rf[13], cpu.rf.rf[14], cpu.rf.rf[15]);
@@ -54,7 +54,7 @@ module tb_extendedtest();
         end
     endtask
 
-    task printDataMem;
+    task ShowDataMem;
         begin
             $display("m[0x0] = 0x%8h", cpu.dm.dataMem[0/4]);
             $display("m[0x4] = 0x%8h", cpu.dm.dataMem[4/4]);
