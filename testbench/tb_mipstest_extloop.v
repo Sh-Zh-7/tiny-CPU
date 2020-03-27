@@ -3,22 +3,17 @@
 //TEXT_BASE_ADDRESS 32'h0000_3000
 //DATA_BASE_ADDRESS 32'h0000_0000
 
-//add sub and or slt addi lw sw beq j
-
 `timescale 1ns/1ns
 module tb_mipstest_extloop();
     reg clk, rst;
 
-    mips cpu(.clk(clk), .rst(rst));
+    MIPS cpu(.clk(clk), .rst(rst));
     integer i = 0;
     integer cnt = 0;
 
     initial
     begin
-        //$readmemh("dat_mipstestloopjal_sim.txt", cpu.insMem.insMem);
-        $readmemh("C:/Users/24312/Desktop/tiny-CPU/dat/mipstest_extloop.dat", cpu.U_IM.imem);
-
-        //$monitor("PC = 0x%8h, instruction = 0x%8h", cpu.PC, cpu.inst);
+        $readmemh("C:/Users/24312/Desktop/tiny-CPU/dat/mipstest_extloop.dat", cpu.im.instruction_memory);
     end
 
     initial
@@ -41,25 +36,24 @@ module tb_mipstest_extloop();
             $display("PC = 0x%8h, instruction = 0x%8h", cpu.PC, cpu.AnInstruction);
 			$display("shamt = 0x%8h, shamt32 = 0x%8h", cpu.shamt, cpu.shamt32);
 			$display("");
-            //$display("rfWriteData = %d, RegSrc = %d", cpu.rfWriteData, cpu.RegSrc);
             cnt = cnt + 1;
         end
         
         if(cnt == 40)
         begin
             printregFile;
-            $display("m[0x%2X] = %d", 80, cpu.U_DM.dataMem[80/4]);
-            $display("m[0x%2X] = %d", 84, cpu.U_DM.dataMem[84/4]);
+            $display("m[0x%2X] = %d", 80, cpu.dm.dataMem[80/4]);
+            $display("m[0x%2X] = %d", 84, cpu.dm.dataMem[84/4]);
             $stop();
         end
     end
 
     task printregFile;
         begin
-            $display("R[00-07]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", 0, cpu.U_RF.rf[1], cpu.U_RF.rf[2], cpu.U_RF.rf[3], cpu.U_RF.rf[4], cpu.U_RF.rf[5], cpu.U_RF.rf[6], cpu.U_RF.rf[7]);
-            $display("R[08-15]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", cpu.U_RF.rf[8], cpu.U_RF.rf[9], cpu.U_RF.rf[10], cpu.U_RF.rf[11], cpu.U_RF.rf[12], cpu.U_RF.rf[13], cpu.U_RF.rf[14], cpu.U_RF.rf[15]);
-            $display("R[16-23]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", cpu.U_RF.rf[16], cpu.U_RF.rf[17], cpu.U_RF.rf[18], cpu.U_RF.rf[19], cpu.U_RF.rf[20], cpu.U_RF.rf[21], cpu.U_RF.rf[22], cpu.U_RF.rf[23]);
-            $display("R[24-31]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", cpu.U_RF.rf[24], cpu.U_RF.rf[25], cpu.U_RF.rf[26], cpu.U_RF.rf[27], cpu.U_RF.rf[28], cpu.U_RF.rf[29], cpu.U_RF.rf[30], cpu.U_RF.rf[31]);
+            $display("R[00-07]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", 0, cpu.rf.rf[1], cpu.rf.rf[2], cpu.rf.rf[3], cpu.rf.rf[4], cpu.rf.rf[5], cpu.rf.rf[6], cpu.rf.rf[7]);
+            $display("R[08-15]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", cpu.rf.rf[8], cpu.rf.rf[9], cpu.rf.rf[10], cpu.rf.rf[11], cpu.rf.rf[12], cpu.rf.rf[13], cpu.rf.rf[14], cpu.rf.rf[15]);
+            $display("R[16-23]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", cpu.rf.rf[16], cpu.rf.rf[17], cpu.rf.rf[18], cpu.rf.rf[19], cpu.rf.rf[20], cpu.rf.rf[21], cpu.rf.rf[22], cpu.rf.rf[23]);
+            $display("R[24-31]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", cpu.rf.rf[24], cpu.rf.rf[25], cpu.rf.rf[26], cpu.rf.rf[27], cpu.rf.rf[28], cpu.rf.rf[29], cpu.rf.rf[30], cpu.rf.rf[31]);
         end
     endtask
 endmodule // tb_mipstest_extloop

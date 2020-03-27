@@ -1,172 +1,157 @@
 `include "../include/ctrl_encode_def.v"
 `include "../include/instruction_def.v"
 
-// NPCµÄ×÷ÓÃ£º°Ñµ±Ç°Ö¸Áî´«ËÍ¸øPC
-module mips( clk, rst );
-	// Ê±ÖÓÏà¹Ø
-	input   clk;						// Ê±ÖÓĞÅºÅ
-	input   rst;						// ¸´Î»ĞÅºÅ
+module MIPS( clk, rst );
+	// æ—¶é’Ÿç›¸å…³
+	input clk;						
+	input rst;						
    
-	// ¿ØÖÆĞÅºÅÏà¹Ø
+	// æ§åˆ¶ä¿¡å·ç›¸å…³
 	wire[1:0] RegDst;
-    wire[1:0] Jump;						// Ìø×ªµÄÖÖÀà
-    wire[1:0] Branch;					// ·ÖÖ§µÄÖÖÀà
-    wire[1:0] RegSrc;					// ×îºó½á¹ûµÄÀ´Ô´
-    wire[3:0] ALUOp;  					// ALUÔËËãÑ¡Ôñ
-    wire[1:0] MemOp;					// ÄÚ´æ²Ù×÷·û
-    wire MemEXT;						// Êı¾İÄÚ´æÀ©Õ¹ÖÖÀà
-    wire MemWrite;						// Êı¾İÄÚ´æĞ´ĞÅºÅ
-    wire ALUSrcA;						// ALU²Ù×÷Êı1
-    wire ALUSrcB;						// ALU²Ù×÷Êı2
-    wire RegWrite;						// RFµÄĞ´ĞÅºÅ
+  wire[1:0] Jump;				
+  wire[1:0] Branch;			
+  wire[1:0] RegSrc;		
+  wire[3:0] ALUOp;  		
+  wire[1:0] MemOp;			
+  wire MemEXT;					
+  wire MemWrite;				
+  wire ALUSrcA;				  
+  wire ALUSrcB;					
+  wire RegWrite;				
 
-	// ËãÊıÔËËãÏà¹Ø
-	wire zero;  
-	wire [31:0] Alu_Result;
-
-   // Ö¸ÁîµØÖ·Ïà¹Ø
-	wire [31:0] PC;						// µ±Ç°Ö¸ÁîµÄµØÖ·
-	wire [31:0] NPC;					// ÏÂÒ»ÌõÖ¸ÁîµÄ
+  // æŒ‡ä»¤åœ°å€ç›¸å…³
+	wire [31:0] PC;			
+	wire [31:0] NPC;		
 	wire [9:0] PCAddr;
 	wire [1:0] NPCOp;
 	assign PCAddr = PC[11:2];
 
-	// Ö¸Áî±¾Ìå
+	// æŒ‡ä»¤æœ¬ä½“
 	wire [31:0] AnInstruction;
-	// ²ğ·ÖÖ¸Áî
-	wire [5:0] Op;
-	wire [5:0] Funct;
+	// æ‹†åˆ†æŒ‡ä»¤
+	wire [5:0] op;
+	wire [5:0] funct;
 	wire [4:0] rs;
 	wire [4:0] rt;
 	wire [4:0] rd;
+	wire [4:0] shamt;
 	wire [15:0] Imm16;
-	wire [25:0] IMM;
-	assign Op = AnInstruction[31:26];
-	assign Funct = AnInstruction[5:0];
+	wire [25:0] Imm26;
+	assign op = AnInstruction[31:26];
+	assign funct = AnInstruction[5:0];
 	assign rs = AnInstruction[25:21];
 	assign rt = AnInstruction[20:16];
 	assign rd = AnInstruction[15:11];
 	assign shamt = AnInstruction[10:6];
 	assign Imm16 = AnInstruction[15:0];
-	assign IMM = AnInstruction[25:0];
+	assign Imm26 = AnInstruction[25:0];
 
-	// ¼Ä´æÆ÷Ïà¹Ø
-	wire [4:0] RF_rd;
+	// ä»å¯„å­˜å™¨ä¸­è¯»å–çš„æ•°æ®
+	wire [31:0] register_data1;
+	wire [31:0] register_data2;
+	// å†™å›å“ªä¸ªå¯„å­˜å™¨å’Œå†™å›å¯„å­˜å™¨çš„æ•°æ®
+	wire [4:0] RF_back;
+	wire [31:0] RF_write_data;
 
-	// ·ûºÅÀ©Õ¹Ïà¹Ø
+		// ç¬¦å·æ‰©å±•çš„ç»“æœ
 	wire [31:0] shamt32;
 	wire [31:0] Imm32;
 
-	// Êı¾İÄÚ´æÏà¹Ø
-	wire [31:0] DM_Out;
-	//wire [11:2] DM_Addr;
-	//assign DM_Addr = Alu_Result[11:2];
-
-	// ¼Ä´æÆ÷Ïà¹Ø
-	wire [31:0] RD1;
-	wire [31:0] RD2;
-	wire [31:0] RF_WD;
-	// ÕâĞ©×îºó¶¼ÓĞmuxÀ´Ñ¡Ôñ
-	// assign RF_WD = (Mem2Reg == 1) ? DM_Out : Alu_Result;
-
-	// ËãÊıÔËËãÏà¹Ø
+	// æœ€ç»ˆå‚ä¸ALUçš„ä¸¤ä¸ªæ“ä½œæ•°
 	wire [31:0] op1, op2;
-	wire [31:0] AluMux_Result;
-	// ÕâĞ©×îºó¶¼ÓĞmuxÀ´Ñ¡Ôñ
-	// assign AluMux_Result = (AluSrc == 0) ? RD2 : Imm32;
+	// ALUç›¸å…³
+	wire Zero;  
+	wire [31:0] ALUResult;
 
+	// DMæ¨¡å—çš„è¾“å‡º
+	wire [31:0] DMOut;
 	
 	//----------------------------------------------------------
-	// Ö¸Áî¼ÆÊıÆ÷Ä£¿é
-	PC U_PC (.clk(clk), .rst(rst), .NPC(NPC), .PC(PC)); 
+	PC pc (.clk(clk), .rst(rst), .NPC(NPC), .PC(PC)); 
     
-	// Ö¸ÁîÄ£¿é
-	im_4k U_IM (.addr(PCAddr) , .dout(AnInstruction));
+	IM im (.addr(PCAddr) , .dout(AnInstruction));
 	
-		// ĞÅºÅ¿ØÖÆÄ£¿é
-	Ctrl U_Ctrl(
-		.OpCode(Op),
-		.funct(Funct),
-        .RegDst(RegDst), 
-        .Jump(Jump), 
-        .Branch(Branch), 
-        .RegSrc(RegSrc), 
-        .ALUOp(ALUOp), 
-        .MemOp(MemOp),
-        .MemExt(MemEXT),
-        .MemWrite(MemWrite),
-        .ALUSrcA(ALUSrcA), 
-        .ALUSrcB(ALUSrcB), 
-        .RegWrite(RegWrite)
+	CTRL ctrl(
+		.OpCode(op),
+		.funct(funct),
+    .RegDst(RegDst), 
+    .Jump(Jump), 
+    .Branch(Branch), 
+  	.RegSrc(RegSrc), 
+    .ALUOp(ALUOp), 
+    .MemOp(MemOp),
+    .MemExt(MemEXT),
+    .MemWrite(MemWrite),
+    .ALUSrcA(ALUSrcA), 
+    .ALUSrcB(ALUSrcB), 
+    .RegWrite(RegWrite)
 	);
 	
-	mux4 #(5) SelWriteReg(
+	MUX4 #(5) selecet_write_register(
 		.d0(rt), 
 		.d1(rd),
 		.d2(5'd31),
 		.d3(5'bz),
-        .s(RegDst),
-        .y(RF_rd)
+    .s(RegDst),
+  	.y(RF_back)
 	);
 
-	// ¼Ä´æÆ÷Ä£¿é   
-	RF U_RF (
-		.A1(rs), .A2(rt), .A3(RF_rd), .WD(RF_WD), .clk(clk), 
-		.RFWr(RegWrite), .RD1(RD1), .RD2(RD2)
+	RF rf (
+		.A1(rs), 
+		.A2(rt), 
+		.A3(RF_back),
+		.WD(RF_write_data),
+		.clk(clk), 
+		.RFWr(RegWrite),
+		.RD1(register_data1),
+		.RD2(register_data2)
 	);
 
-	// ·ûºÅÀ©Õ¹Ä£¿é
-	EXT_16_32 U_SIGNEDEXT1 (.Imm16(Imm16), .EXTOp(`EXT_SIGNED), .Imm32(Imm32));
-	EXT_5_32 U_SIGNEDEXT2 (.shamt(shamt), .EXTOp(`EXT_ZERO), .out32(shamt32));
+	EXT_16_32 signed_ext (.in16(Imm16), .EXTOp(`EXT_SIGNED), .out32(Imm32));
+	EXT_5_32 zero_ext (.in5(shamt), .EXTOp(`EXT_ZERO), .out32(shamt32));
 	
 	
-	mux2 #(32) SelOperand1(
-		.d0(RD1),
+	MUX2 #(32) select_operand1(
+		.d0(register_data1),
 		.d1(shamt32),
-        .s(ALUSrcA),
-        .y(op1)
+    .s(ALUSrcA),
+    .y(op1)
 	);
 		
-    mux2 #(32) SelOperand2(
-		.d0(RD2),
+  MUX2 #(32) select_operand2(
+		.d0(register_data2),
 		.d1(Imm32), 
-        .s(ALUSrcB),
-        .y(op2)
+    .s(ALUSrcB),
+    .y(op2)
 	);  
 	
-	// ËãÊõÔËËãÄ£¿é
-	alu U_ALU (
+	ALU alu (
 		.A(op1), 
 		.B(op2),
 		.ALUOp(ALUOp), 
-		.C(Alu_Result),
-		.Zero(zero)
+		.C(ALUResult),
+		.Zero(Zero)
 	);
 
-	// Êı¾İÄÚ´æÄ£¿é
-	DataMem U_DM (
+	DM dm (
 		.MemOp(MemOp),
 		.MemEXT(MemEXT),
-		.address(Alu_Result), 
-		.din(RD2),
+		.address(ALUResult), 
+		.din(register_data2),
 		.DMWr(MemWrite),
 		.clk(clk), 
-		.dout(DM_Out)
+		.dout(DMOut)
 	);
 	
-	
-    mux4 #(32) SelRFWriteData(
-		.d0(Alu_Result),
-		.d1(DM_Out),
-		// ÕâÀï»¹ÓĞÒ»µãÒÉÎÊ
+  MUX4 #(32) select_write_data(
+		.d0(ALUResult),
+		.d1(DMOut),
 		.d2(PC + 32'd4),
 		.d3(32'bz),
-        .s(RegSrc),
-        .y(RF_WD)
+    .s(RegSrc),
+  	.y(RF_write_data)
 	);
 	
-	// È·¶¨ÏÂÒ»¸öÖ¸ÁîµÄµØÖ·
-	PCSrc U_PCSrc(.Jump(Jump), .Branch(Branch), .Zero(zero), .NPCOp(NPCOp));
-	NPC U_NPC (.PC(PC), .NPCOp(NPCOp), .IMM(Imm32), .addr(RD1), .NPC(NPC));
-
+	PCSrc pc_src(.Jump(Jump), .Branch(Branch), .Zero(Zero), .NPCOp(NPCOp));
+	NPC npc(.PC(PC), .NPCOp(NPCOp), .IMM(Imm32), .addr(register_data1), .NPC(NPC));
 endmodule

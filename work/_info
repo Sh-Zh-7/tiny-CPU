@@ -9,407 +9,435 @@ z2
 cModel Technology
 Z0 dD:/modelsim/examples
 T_opt
-!s110 1584359285
-VhZ5cR>2MzlMm59K?<gaKW1
-Z1 04 19 4 work tb_mipstest_extloop fast 0
-=1-54bf64384687-5e6f6775-299-3da4
-Z2 o-quiet -auto_acc_if_foreign -work work +acc
+!s110 1585288339
+VWoK@bVen`>LaYKLoZ5:Xg2
+04 15 4 work tb_extendedtest fast 0
+=1-54bf64384687-5e7d9493-9f-5fc4
+Z1 o-quiet -auto_acc_if_foreign -work work +acc
 n@_opt
-Z3 OL;O;10.4;61
+Z2 OL;O;10.4;61
 R0
 T_opt1
-!s110 1584362444
-V09QCVI]cMJoFaS1Z9lL2h2
+!s110 1585288373
+V7OZFhT7O7V8c^H>UEVW8D2
+04 19 4 work tb_mipstest_extloop fast 0
+=1-54bf64384687-5e7d94b5-238-15f0
 R1
-=1-54bf64384687-5e6f73cc-322-2574
-R2
 n@_opt1
-R3
-R0
-T_opt2
-!s110 1584366993
-VaiYakWhm=EfCfM;8l[<oI1
-R1
-=1-54bf64384687-5e6f8590-37c-cb4
 R2
-n@_opt2
-R3
-R0
-T_opt3
-!s110 1584373395
-V@DWfkYXBBJjiO?`1NB71K2
-R1
-=1-54bf64384687-5e6f9e92-34f-32bc
-R2
-n@_opt3
-R3
-valu
-Z4 !s110 1584373386
+vALU
+Z3 !s110 1585288238
 !i10b 1
-!s100 1J^bm268WR0`TfB^0BgQU1
-IkCWMZHNzL4eUVlC855QF71
-Z5 VDg1SIo80bB@j0V0VzS_@n1
-Z6 dC:/Users/24312/Desktop/tiny-CPU
-w1584354732
+!s100 ^HfJaP8k?zVnLmcC@<bBD3
+IFh8MYiTI]021@ZM36a4GG3
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 dC:/Users/24312/Desktop/tiny-CPU
+w1585287135
 8C:/Users/24312/Desktop/tiny-CPU/source/ALU.v
 FC:/Users/24312/Desktop/tiny-CPU/source/ALU.v
 L0 2
-Z7 OL;L;10.4;61
+Z6 OL;L;10.4;61
 r1
 !s85 0
 31
-!s108 1584373386.569000
+!s108 1585288238.572000
 !s107 C:\Users\24312\Desktop\tiny-CPU\source\..\include\ctrl_encode_def.v|C:/Users/24312/Desktop/tiny-CPU/source/ALU.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/ALU.v|
 !i113 0
-Z8 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-vCtrl
-R4
+Z7 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+n@a@l@u
+vCTRL
+R3
 !i10b 1
-!s100 5B=@Cnh>eVX4]E31`1PRQ1
-Ii`W2Rc3HCNbofV>NNT[Jj1
+!s100 5B?g5FLliCTR7l0T`Mb3T3
+IFni^I@M_O]4d`ib2m4hQL0
+R4
 R5
-R6
-w1584373372
+w1585287346
 8C:/Users/24312/Desktop/tiny-CPU/source/Control.v
 FC:/Users/24312/Desktop/tiny-CPU/source/Control.v
 L0 4
-R7
+R6
 r1
 !s85 0
 31
-!s108 1584373386.647000
+!s108 1585288238.670000
 !s107 C:\Users\24312\Desktop\tiny-CPU\source\..\include\instruction_def.v|C:\Users\24312\Desktop\tiny-CPU\source\..\include\ctrl_encode_def.v|C:/Users/24312/Desktop/tiny-CPU/source/Control.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/Control.v|
 !i113 0
-R8
-n@ctrl
-vDataMem
-R4
+R7
+n@c@t@r@l
+vDM
+R3
 !i10b 1
-!s100 Qj3[ncNKRc7Rg:cLCobg:2
-I:?=b6=DXE3?9N]A5mMc_O3
+!s100 52?Ee0QW80YW6]C[>6g[;0
+IYB8Bd3<Ab@8QLbJUDJ72]0
+R4
 R5
-R6
-w1584359194
+w1585240657
 8C:/Users/24312/Desktop/tiny-CPU/source/DM.v
 FC:/Users/24312/Desktop/tiny-CPU/source/DM.v
 L0 3
-R7
+R6
 r1
 !s85 0
 31
-!s108 1584373386.866000
+!s108 1585288238.924000
 !s107 C:\Users\24312\Desktop\tiny-CPU\source\..\include\ctrl_encode_def.v|C:/Users/24312/Desktop/tiny-CPU/source/DM.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/DM.v|
 !i113 0
-R8
-n@data@mem
-vEXT
-!s110 1584358154
-!i10b 1
-!s100 TSoDTzAORAMFWWo1N>[BX2
-IO]OXL>`jho8O[<S>81<?j1
-R5
-R6
-w1584261883
-8C:/Users/24312/Desktop/tiny-CPU/source/EXT_16_32.v
-FC:/Users/24312/Desktop/tiny-CPU/source/EXT_16_32.v
-L0 3
 R7
-r1
-!s85 0
-31
-!s108 1584358154.678000
-!s107 C:\Users\24312\Desktop\tiny-CPU\source\..\include\ctrl_encode_def.v|C:/Users/24312/Desktop/tiny-CPU/source/EXT_16_32.v|
-!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/EXT_16_32.v|
-!i113 0
-R8
-n@e@x@t
+n@d@m
 vEXT_16_32
-Z9 !s110 1584373387
+Z8 !s110 1585288239
 !i10b 1
-!s100 N=Sanz2jkKKDQASAO?b1<3
-IK:63@C^;<R?`bhWJA<=o51
+!s100 `ho:KRkAH5CfIF0bnldN01
+I8ke`^Sa@ohLiMm2ZY^Ymn3
+R4
 R5
+Z9 w1585288051
+Z10 8C:/Users/24312/Desktop/tiny-CPU/source/EXT.v
+Z11 FC:/Users/24312/Desktop/tiny-CPU/source/EXT.v
+L0 24
 R6
-Z10 w1584364986
-Z11 8C:/Users/24312/Desktop/tiny-CPU/source/EXT.v
-Z12 FC:/Users/24312/Desktop/tiny-CPU/source/EXT.v
-L0 3
-R7
 r1
 !s85 0
 31
-Z13 !s108 1584373387.948000
-Z14 !s107 C:\Users\24312\Desktop\tiny-CPU\source\..\include\ctrl_encode_def.v|C:/Users/24312/Desktop/tiny-CPU/source/EXT.v|
-Z15 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/EXT.v|
+Z12 !s108 1585288239.052000
+Z13 !s107 C:\Users\24312\Desktop\tiny-CPU\source\..\include\ctrl_encode_def.v|C:/Users/24312/Desktop/tiny-CPU/source/EXT.v|
+Z14 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/EXT.v|
 !i113 0
-R8
+R7
 n@e@x@t_16_32
 vEXT_5_32
-R9
+R8
 !i10b 1
-!s100 eHLM90ho0WS9G<VhlSCRZ3
-I7DV1OA^Xcn@?9;OCnc@8U0
+!s100 HiTOHWjAZe2JHBQjVD50e2
+IWUmMPfn:a595Hd?S^]BCA0
+R4
 R5
-R6
+R9
 R10
 R11
-R12
-Z16 L0 15
-R7
+L0 5
+R6
 r1
 !s85 0
 31
+R12
 R13
 R14
-R15
 !i113 0
-R8
+R7
 n@e@x@t_5_32
 vEXT_8_32
-R9
+R8
 !i10b 1
-!s100 ?UYXzToXWzDLcUACO?i<70
-I3Fg]LKgMiazIVf`[8ez`F3
+!s100 VBOc>gZCX4`n<]MZdm<LK1
+IFEQm]gPa9N7m>XFh:n@<H1
+R4
 R5
-R6
+R9
 R10
 R11
-R12
-L0 27
-R7
+L0 14
+R6
 r1
 !s85 0
 31
+R12
 R13
 R14
-R15
 !i113 0
-R8
+R7
 n@e@x@t_8_32
-vim_4k
-R9
+vIM
+R8
 !i10b 1
-!s100 IFg:DzDbn@dl>]6`TeBKX0
-I6Ek:ajmQ3Y>SN[JSo?9IH0
+!s100 4TehaSe<63oM=anc?RbVz2
+IhUk3ige90WOVU>KCLDZ=n2
+R4
 R5
-R6
-w1584028472
+w1585238570
 8C:/Users/24312/Desktop/tiny-CPU/source/IM.v
 FC:/Users/24312/Desktop/tiny-CPU/source/IM.v
 L0 1
-R7
+R6
 r1
 !s85 0
 31
-!s108 1584373386.994000
+!s108 1585288239.180000
 !s107 C:/Users/24312/Desktop/tiny-CPU/source/IM.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/IM.v|
 !i113 0
-R8
-vmips
-R4
+R7
+n@i@m
+vMIPS
+R3
 !i10b 1
-!s100 bnYzj:FQTj>SXlBMAU7zf2
-IRlefW1e685ToY>mbL;3`:2
+!s100 YR]VdkXcUKkeU`]U6:f;]3
+I<dL4o7z79Ide^fE:W3UiL1
+R4
 R5
-R6
-w1584372603
+w1585287947
 8C:/Users/24312/Desktop/tiny-CPU/source/CPU.v
 FC:/Users/24312/Desktop/tiny-CPU/source/CPU.v
-L0 5
-R7
+L0 4
+R6
 r1
 !s85 0
 31
-!s108 1584373386.757000
+!s108 1585288238.794000
 !s107 C:\Users\24312\Desktop\tiny-CPU\source\..\include\instruction_def.v|C:\Users\24312\Desktop\tiny-CPU\source\..\include\ctrl_encode_def.v|C:/Users/24312/Desktop/tiny-CPU/source/CPU.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/CPU.v|
 !i113 0
-R8
-vmux16
-R9
-!i10b 1
-!s100 _kD]@DiV[:SJ[]_:lBKV[0
-IN>fzSP1JecYnHedL=h9in1
-R5
-R6
-Z17 w1584366576
-Z18 8C:/Users/24312/Desktop/tiny-CPU/source/MUX.v
-Z19 FC:/Users/24312/Desktop/tiny-CPU/source/MUX.v
-L0 71
 R7
+n@m@i@p@s
+vMUX16
+R8
+!i10b 1
+!s100 IYjjFHBnYV2<5z]FGU]RJ3
+IV7o=n6P=JWLEgN65@oOLR1
+R4
+R5
+Z15 w1585280401
+Z16 8C:/Users/24312/Desktop/tiny-CPU/source/MUX.v
+Z17 FC:/Users/24312/Desktop/tiny-CPU/source/MUX.v
+L0 67
+R6
 r1
 !s85 0
 31
-Z20 !s108 1584373387.104000
-Z21 !s107 C:/Users/24312/Desktop/tiny-CPU/source/MUX.v|
-Z22 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/MUX.v|
+Z18 !s108 1585288239.306000
+Z19 !s107 C:/Users/24312/Desktop/tiny-CPU/source/MUX.v|
+Z20 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/MUX.v|
 !i113 0
-R8
-vmux2
-R9
-!i10b 1
-!s100 QXC^TY7h[nMB8eh1LThKL1
-IkhFl07b@RkJT4HIJ0C>Ph0
-R5
-R6
-R17
-R18
-R19
-L0 2
 R7
-r1
-!s85 0
-31
-R20
-R21
-R22
-!i113 0
+n@m@u@x16
+vMUX2
 R8
-vmux4
-R9
 !i10b 1
-!s100 3KQ[c;ZUY31^gKT9SAAk20
-IAb?gMImeMI3DcVE_`ZCM63
+!s100 ha`z^SM75W`Wl8M@5Nc4Q3
+IL`c_C?;Q_N<==EAYhLa0L3
+R4
 R5
-R6
-R17
-R18
-R19
+R15
 R16
-R7
+R17
+L0 1
+R6
 r1
 !s85 0
 31
-R20
-R21
-R22
-!i113 0
-R8
-vmux8
-R9
-!i10b 1
-!s100 FLg[0F=fBIb=LWfFP8G0M0
-Ig1l?Go=R<n@=H`Mzf=6=33
-R5
-R6
-R17
 R18
 R19
-L0 40
+R20
+!i113 0
 R7
+n@m@u@x2
+vMUX4
+R8
+!i10b 1
+!s100 jzWggn[K;I6K:8FlG5gk<1
+I]dYFZDIblenOT8SgfQ_GQ2
+R4
+R5
+R15
+R16
+R17
+L0 13
+R6
 r1
 !s85 0
 31
+R18
+R19
 R20
-R21
-R22
 !i113 0
+R7
+n@m@u@x4
+vMUX8
 R8
-vNPC
-R9
 !i10b 1
-!s100 ;BfC9ZAQ=CFM4BgUokDeB0
-IK25Mg^DM_GHo6HXfXFHlj1
+!s100 OQ[69a20J0k9LZM3W?[z]1
+I>@jKz4^VV]kWMWHz`oeG@2
+R4
 R5
+R15
+R16
+R17
+L0 37
 R6
-w1584354388
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R7
+n@m@u@x8
+vNPC
+R8
+!i10b 1
+!s100 [BC=1HGYnF]SG<EcY>o`N1
+ImmKnCP2V9g4WN:bUoSjE;1
+R4
+R5
+w1585287557
 8C:/Users/24312/Desktop/tiny-CPU/source/NPC.v
 FC:/Users/24312/Desktop/tiny-CPU/source/NPC.v
 L0 3
-R7
+R6
 r1
 !s85 0
 31
-!s108 1584373387.213000
+!s108 1585288239.433000
 !s107 C:\Users\24312\Desktop\tiny-CPU\source\..\include\ctrl_encode_def.v|C:/Users/24312/Desktop/tiny-CPU/source/NPC.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/NPC.v|
 !i113 0
-R8
+R7
 n@n@p@c
 vPC
-R9
+R8
 !i10b 1
 !s100 lM7N@gR;4fMz]3L;mLgJ<2
 I1f6e^1:A@z^B00zoPi0n@1
+R4
 R5
-R6
 w1584360482
 8C:/Users/24312/Desktop/tiny-CPU/source/PC.v
 FC:/Users/24312/Desktop/tiny-CPU/source/PC.v
 L0 1
-R7
+R6
 r1
 !s85 0
 31
-!s108 1584373387.307000
+!s108 1585288239.548000
 !s107 C:/Users/24312/Desktop/tiny-CPU/source/PC.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/PC.v|
 !i113 0
-R8
+R7
 n@p@c
 vPCSrc
-R9
+R8
 !i10b 1
-!s100 i7Ik]_89@WTehU1_Nc0hc3
-Iok7?C]cW>NHSX:C^3:1o;0
+!s100 GgJfzEdd>GdKlHYzX=9822
+IPCVUm6d:Q^J_I?ZV9OO2n2
+R4
 R5
-R6
-w1584350303
+w1585287603
 8C:/Users/24312/Desktop/tiny-CPU/source/PCSrc.v
 FC:/Users/24312/Desktop/tiny-CPU/source/PCSrc.v
-L0 3
-R7
+L0 2
+R6
 r1
 !s85 0
 31
-!s108 1584373387.416000
+!s108 1585288239.676000
 !s107 C:\Users\24312\Desktop\tiny-CPU\source\..\include\ctrl_encode_def.v|C:/Users/24312/Desktop/tiny-CPU/source/PCSrc.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/PCSrc.v|
 !i113 0
-R8
+R7
 n@p@c@src
 vRF
-R9
+R8
 !i10b 1
-!s100 jYGQB`db<>ckdZLmiLzAh0
-I>TjGj`gefge]iNMe@z95?3
+!s100 Dh<1PY<66H_heFYL1eR6T2
+I3Q7]AkG6bh8<<Sb6k5>=z1
+R4
 R5
-R6
-w1584363685
+w1585287437
 8C:/Users/24312/Desktop/tiny-CPU/source/RF.v
 FC:/Users/24312/Desktop/tiny-CPU/source/RF.v
 L0 1
-R7
+R6
 r1
 !s85 0
 31
-!s108 1584373387.542000
+!s108 1585288239.844000
 !s107 C:/Users/24312/Desktop/tiny-CPU/source/RF.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/source/RF.v|
 !i113 0
-R8
-n@r@f
-vtb_mipstest_extloop
-R9
-!i10b 1
-!s100 5]IRUOi6gK799JZG2:Ok53
-IdYHlSKJ@C7QONhnmIVjD?0
-R5
-R6
-w1584373139
-8C:/Users/24312/Desktop/tiny-CPU/testbench/CPU_tb.v
-FC:/Users/24312/Desktop/tiny-CPU/testbench/CPU_tb.v
-L0 2
 R7
+n@r@f
+vtb_extendedtest
+Z21 !s110 1585288240
+!i10b 1
+!s100 _DYfMK`;;z3PNhGFPcli>0
+IfjUVzUG<_eG_0Tn:NjXEg0
+R4
+R5
+w1585286891
+8C:/Users/24312/Desktop/tiny-CPU/testbench/tb_extendedtest.v
+FC:/Users/24312/Desktop/tiny-CPU/testbench/tb_extendedtest.v
+L0 7
+R6
 r1
 !s85 0
 31
-!s108 1584373387.838000
-!s107 C:/Users/24312/Desktop/tiny-CPU/testbench/CPU_tb.v|
-!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/testbench/CPU_tb.v|
+!s108 1585288240.247000
+!s107 C:/Users/24312/Desktop/tiny-CPU/testbench/tb_extendedtest.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/testbench/tb_extendedtest.v|
 !i113 0
-R8
+R7
+vtb_mipstest_extloop
+R21
+!i10b 1
+!s100 E0hZXEgONa5cde:DCOWl82
+I:chdngcDd4Dzkd<6][1O_3
+R4
+R5
+w1585286935
+8C:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstest_extloop.v
+FC:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstest_extloop.v
+L0 7
+R6
+r1
+!s85 0
+31
+!s108 1585288240.365000
+!s107 C:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstest_extloop.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstest_extloop.v|
+!i113 0
+R7
+vtb_mipstestloop
+R21
+!i10b 1
+!s100 <8jLcG9QMazDg=ONC6GgD0
+IomkeGaa9=l`kUoTJEZFQ93
+R4
+R5
+w1585286944
+8C:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstestloop_sim.v
+FC:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstestloop_sim.v
+L0 2
+R6
+r1
+!s85 0
+31
+!s108 1585288240.490000
+!s107 C:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstestloop_sim.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstestloop_sim.v|
+!i113 0
+R7
+vtb_mipstestloopjal_sim
+R21
+!i10b 1
+!s100 3IjSnLH@6?4I2V9YRl3ef0
+IW=G7PkM^<?J:j=lh4lRo;1
+R4
+R5
+w1585286960
+8C:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstestloopjal_sim.v
+FC:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstestloopjal_sim.v
+L0 9
+R6
+r1
+!s85 0
+31
+!s108 1585288240.618000
+!s107 C:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstestloopjal_sim.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/24312/Desktop/tiny-CPU/testbench/tb_mipstestloopjal_sim.v|
+!i113 0
+R7

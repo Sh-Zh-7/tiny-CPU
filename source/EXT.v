@@ -1,37 +1,30 @@
 `include "../include/ctrl_encode_def.v"
 
-module EXT_16_32(Imm16, EXTOp, Imm32);
-	input [15:0]  Imm16;
-	input EXTOp;
-	output [31:0] Imm32;
-	
-	assign Imm32 = (EXTOp == `EXT_SIGNED)?
-					{{16{Imm16[15]}}, Imm16} :
-					{16'd0, Imm16};
-endmodule
-
-
-// ��5λ��shamtת��Ϊ32λ��
-module EXT_5_32(shamt, EXTOp, out32);
-    
-   input [4:0] shamt;//5bit shamt
-   input EXTOp;//0: zero extension; 1: signed-extension
-   output [31:0] out32;//32bit operand for ALU
+// 把5位数根据EXTOp转成32位数
+// 这个专门用于shamt
+module EXT_5_32(in5, EXTOp, out32);
+   input [4:0] in5;
+   input EXTOp;        
+   output [31:0] out32;
    
-   assign out32 = (EXTOp == `EXT_SIGNED) 
-                ? {{27{shamt[4]}}, shamt} //signed-extension
-                : {27'd0, shamt}; //zero extension
-       
+   assign out32 = (EXTOp == `EXT_SIGNED)? {{27{in5[4]}}, in5} : {27'd0, in5}; 
 endmodule
 
+// 把8位数根据EXTOp转成32位数
 module EXT_8_32(in8, EXTOp, out32 );
-    
    input[7:0] in8;
-   input EXTOp;//0: zero extension; 1: signed-extension
+   input EXTOp;
    output[31:0] out32;
    
-   assign out32 = (EXTOp == `EXT_SIGNED) 
-                  ? {{24{in8[7]}}, in8} //signed-extension
-                  : {24'd0, in8}; //zero extension
-       
+   assign out32 = (EXTOp == `EXT_SIGNED)? {{24{in8[7]}}, in8} : {24'd0, in8};   
+endmodule
+
+// 把16位数根据EXTOp转成32位数
+// 这个专门用于RI指令中的imm
+module EXT_16_32(in16, EXTOp, out32);
+	input [15:0]  in16;
+	input EXTOp;
+	output [31:0] out32;
+	
+	assign out32 = (EXTOp == `EXT_SIGNED)? {{16{in16[15]}}, in16} : {16'd0, in16};
 endmodule

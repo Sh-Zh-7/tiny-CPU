@@ -1,5 +1,4 @@
 `include "../include/ctrl_encode_def.v"
-// 生成NPCOp的信号
 module PCSrc(Jump, Branch, Zero, NPCOp);
     input[1:0] Jump;
     input[1:0] Branch;

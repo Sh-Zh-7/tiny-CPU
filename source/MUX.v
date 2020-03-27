@@ -1,5 +1,4 @@
-// mux2
-module mux2 #(parameter WIDTH = 8)
+module MUX2 #(parameter WIDTH = 8)
              (d0, d1,
               s, y);
               
@@ -11,8 +10,7 @@ module mux2 #(parameter WIDTH = 8)
     
 endmodule
 
-// mux4
-module mux4 #(parameter WIDTH = 8)
+module MUX4 #(parameter WIDTH = 8)
              (d0, d1, d2, d3,
               s, y);
     
@@ -36,8 +34,7 @@ module mux4 #(parameter WIDTH = 8)
         
 endmodule
 
-// mux8
-module mux8 #(parameter WIDTH = 8)
+module MUX8 #(parameter WIDTH = 8)
              (d0, d1, d2, d3,
               d4, d5, d6, d7,
               s, y);
@@ -67,8 +64,7 @@ module mux8 #(parameter WIDTH = 8)
     
 endmodule
 
-// mux16
-module mux16 #(parameter WIDTH = 8)
+module MUX16 #(parameter WIDTH = 8)
              (d0, d1, d2, d3,
               d4, d5, d6, d7,
               d8, d9, d10, d11,

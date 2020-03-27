@@ -15,11 +15,8 @@ module RF( A1, A2, A3, WD, clk, RFWr, RD1, RD2 );
    end
    
    always @(posedge clk) begin
-     // $display("RFWr=%1B, WD=%8X, TargetAddr=%2X", RFWr, WD, A3);
-
-
       if (RFWr) rf[A3] <= WD;
-
+	  
       $display("R[00-07]=%8X, %8X, %8X, %8X, %8X, %8X, %8X, %8X", rf[0], rf[1], rf[2], rf[3], rf[4], rf[5], rf[6], rf[7]);
       $display("R[08-15]=%8X, %8X, %8X, %8X, %8X, %8X, %8X, %8X", rf[8], rf[9], rf[10], rf[11], rf[12], rf[13], rf[14], rf[15]);
       $display("R[16-23]=%8X, %8X, %8X, %8X, %8X, %8X, %8X, %8X", rf[16], rf[17], rf[18], rf[19], rf[20], rf[21], rf[22], rf[23]);
